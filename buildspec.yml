@@ -12,8 +12,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t reservation-api-app .
-      - docker tag reservation-api-app:latest ${ECR_REPOSITORY}:latest
+      - docker build -t reservation-api-container .
+      - docker tag reservation-api-container:latest ${ECR_REPOSITORY}:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
@@ -23,7 +23,7 @@ phases:
       - |
         echo '[
           {
-            "name": "reservation-api-app",
+            "name": "reservation-api-container",
             "imageUri": "'${ECR_REPOSITORY}':latest"
           }
         ]' > imagedefinitions.json
